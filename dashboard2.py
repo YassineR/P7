@@ -46,7 +46,10 @@ with col1:
 with col2:
     st.title('Prêt à dépenser')
     st.subheader("Scoring client")
-id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
+    id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
+with col3:
+    st.title('Prêt à dépenser')
+    
 #chaine = "l'id Saisi est " + str(id_input)
 #st.write(chaine)
 
