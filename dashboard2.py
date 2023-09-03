@@ -5,7 +5,7 @@ import pandas as pd
 import time
 from urllib.request import urlopen
 import json
-from toolbox.predict import *
+# from toolbox.predict import *
 
 
 #Load Dataframe
