@@ -5,6 +5,8 @@ import pandas as pd
 import time
 from urllib.request import urlopen
 import json
+
+from PIL import Image
 # from toolbox.predict import *
 
 
@@ -34,6 +36,11 @@ def chargement_ligne_data(id, df):
 #liste_id = dataframe['SK_ID_CURR'].tolist()
 
 #affichage formulaire
+
+image = Image.open('logo.png')
+
+st.image(image, caption='Sunrise by the mountains')
+
 st.title('Prêt à dépenser')
 st.subheader("Scoring client")
 id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
