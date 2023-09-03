@@ -37,9 +37,9 @@ def chargement_ligne_data(id, df):
 
 #affichage formulaire
 
-image = Image.open('Logo.png')
-
-st.image(image, width = 600)
+with st.sidebar:
+    image = Image.open('Logo.png')    
+    st.image(image, width = 600)
 
 st.title('Prêt à dépenser')
 st.subheader("Scoring client")
