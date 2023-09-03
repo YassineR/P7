@@ -37,12 +37,15 @@ def chargement_ligne_data(id, df):
 
 #affichage formulaire
 
-with st.sidebar:
+col1, col2, col3 = st.columns([0.2,0.5,0.3])
+
+with col1:
     image = Image.open('Logo.png')    
     st.image(image, width = 600)
 
-st.title('Prêt à dépenser')
-st.subheader("Scoring client")
+with col2:
+    st.title('Prêt à dépenser')
+    st.subheader("Scoring client")
 id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
 #chaine = "l'id Saisi est " + str(id_input)
 #st.write(chaine)
