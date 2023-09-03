@@ -38,7 +38,7 @@ def chargement_ligne_data(id, df):
 #affichage formulaire
 
 st.set_page_config(
-    page_title="Dashboard Credit Score Client"
+    page_title="Dashboard Credit Score Client",
     layout="wide"
     # initial_sidebar_state="expanded",
     # menu_items={
