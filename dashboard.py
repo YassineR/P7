@@ -23,7 +23,7 @@ with col12:
     st.subheader("Scoring client")
     id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
 
-    id_input = 0.56
-    id_input = st.number_input('EXT_SOURCE_3',
+    varTest = 0.56
+    varTest = st.number_input('EXT_SOURCE_3',
                                  min_value=0., value=varTest, step=1., max_value = 1)
     
