@@ -9,7 +9,7 @@ from PIL import Image
 
 st.set_page_config(
     page_title="Dashboard Credit Score Client",
-    layout="wide" }
+    layout="wide" 
 )
 
 col11, col12 = st.columns([0.4,0.6])
