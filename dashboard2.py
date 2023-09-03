@@ -41,7 +41,7 @@ col1, col2, col3 = st.columns([0.2,0.5,0.3])
 
 with col1:
     image = Image.open('Logo.png')    
-    st.image(image, width = 600)
+    st.image(image)
 
 with col2:
     st.title('Prêt à dépenser')
