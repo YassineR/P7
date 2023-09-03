@@ -48,7 +48,7 @@ st.set_page_config(
     # }
 )
 
-col1, col2, col3 = st.columns([0.4,0.6])
+col1, col2 = st.columns([0.4,0.6])
 
 with col1:
     image = Image.open('Logo.png')    
