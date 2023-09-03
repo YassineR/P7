@@ -34,8 +34,8 @@ def chargement_ligne_data(id, df):
 #liste_id = dataframe['SK_ID_CURR'].tolist()
 
 #affichage formulaire
-st.title('Dashboard Scoring Credit')
-st.subheader("Prédictions de scoring client et comparaison à l'ensemble des clients")
+st.title('Prêt à dépenser')
+st.subheader("Scoring client")
 id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
 #chaine = "l'id Saisi est " + str(id_input)
 #st.write(chaine)
