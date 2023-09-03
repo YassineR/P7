@@ -37,7 +37,18 @@ def chargement_ligne_data(id, df):
 
 #affichage formulaire
 
-col1, col2, col3 = st.columns([0.2,0.5,0.3])
+st.set_page_config(
+    page_title="Dashboard Credit Score Client"
+    layout="wide"
+    # initial_sidebar_state="expanded",
+    # menu_items={
+    #     'Get Help': 'https://www.extremelycoolapp.com/help',
+    #     'Report a bug': "https://www.extremelycoolapp.com/bug",
+    #     'About': "# This is a header. This is an *extremely* cool app!"
+    # }
+)
+
+col1, col2, col3 = st.columns([0.4,0.6])
 
 with col1:
     image = Image.open('Logo.png')    
@@ -47,8 +58,6 @@ with col2:
     st.title('Prêt à dépenser')
     st.subheader("Scoring client")
     id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
-with col3:
-    st.title('Prêt à dépenser')
     
 #chaine = "l'id Saisi est " + str(id_input)
 #st.write(chaine)
