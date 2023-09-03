@@ -39,7 +39,7 @@ def chargement_ligne_data(id, df):
 
 image = Image.open('Logo.png')
 
-st.image(image, caption='Sunrise by the mountains')
+st.image(image, width = 600)
 
 st.title('Prêt à dépenser')
 st.subheader("Scoring client")
