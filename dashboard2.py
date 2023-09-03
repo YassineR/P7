@@ -37,7 +37,7 @@ def chargement_ligne_data(id, df):
 
 #affichage formulaire
 
-image = Image.open('logo.png')
+image = Image.open('Logo.png')
 
 st.image(image, caption='Sunrise by the mountains')
 
