@@ -32,10 +32,10 @@ lgbm = load_model()
 @st.cache_data    
 def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
-    _data = _data[data["SK_ID_CURR"] == (st.session_state.input)]
+    _data = _data[data["SK_ID_CURR"] == st.session_state.index]
     print(_id_client)
     if(_data.shape[0]==0):
-        st.session_state.text = str(type(st.session_state.input))
+        st.session_state.text = str(type(st.session_state.index))
         return -1
     else:
         return _model.predict(_data[feats])
@@ -47,14 +47,14 @@ def lgbm_prediction(_data, _id_client, _model):
 #     st.session_state.test = st.session_state.ext_source_3
 
 def update_index(*args):
-    pred = lgbm_prediction(data, st.session_state.input, lgbm)
+    pred = lgbm_prediction(data, st.session_state.index, lgbm)
     st.session_state.prediction = pred
     
 
 
 st.session_state.ext_source_3 = 0.57 if 'ext_source_3' not in st.session_state else st.session_state.ext_source_3
 st.session_state.test = -1. if 'test' not in st.session_state else st.session_state.test
-st.session_state.input = 0 if 'input' not in st.session_state else st.session_state.input
+st.session_state.index = 0 if 'index' not in st.session_state else st.session_state.index
 # st.session_state.prediction = None if 'prediction' not in st.session_state else st.session_state.prediction
 
 col11, col12 = st.columns([0.4,0.6])
@@ -66,7 +66,7 @@ with col11:
 with col12:
     st.title('Prêt à dépenser')
     st.subheader("Scoring client")
-    id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', on_change=update_index )
+    id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:',keyt = 'index', on_change=update_index )
     
     st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
                                  min_value=0., step=0.1, max_value = 1.)
