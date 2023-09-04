@@ -66,7 +66,7 @@ with col11:
 with col12:
     st.title('Prêt à dépenser')
     st.subheader("Scoring client")
-    id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index', on_change=update_index )
+    id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
     
     st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
                                  min_value=0., step=0.1, max_value = 1.)
