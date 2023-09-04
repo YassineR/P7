@@ -14,6 +14,9 @@ st.set_page_config(
     layout="wide" 
 )
 
+data = load_dataframe()
+lgbm = load_model()
+
 @st.cache_resource 
 def load_model():
     lgbm = pickle.load(open('model.pkl', 'rb'))
@@ -37,8 +40,6 @@ def update_index(*args):
     st.session_state.prediction = pred
     
 
-data = load_dataframe()
-lgbm = load_model()
 
 st.session_state.ext_source_3 = 0.57 if 'ext_source_3' not in st.session_state else st.session_state.ext_source_3
 st.session_state.test = -1. if 'test' not in st.session_state else st.session_state.test
