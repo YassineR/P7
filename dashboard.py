@@ -37,7 +37,7 @@ def lgbm_prediction(_data, _id_client, _model):
         st.session_state.text = str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
         return -1
     else:
-        return  10 #_model.predict(_data[feats])
+        return  _model.predict(_data[feats])[0]
     
 
 
