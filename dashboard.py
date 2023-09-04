@@ -31,9 +31,9 @@ lgbm = load_model()
 
 @st.cache_data    
 def lgbm_prediction(_data, _id_client, _model):
-    feats = [f for f in data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
-    data = data[data["SK_ID_CURR"] == id_client]
-    return model.predict(data[feats])
+    feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
+    _data = _data[data["SK_ID_CURR"] == _id_client]
+    return _model.predict(_data[feats])
     
 
 
