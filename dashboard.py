@@ -14,8 +14,6 @@ st.set_page_config(
     layout="wide" 
 )
 
-data = load_dataframe()
-lgbm = load_model()
 
 @st.cache_resource 
 def load_model():
@@ -26,6 +24,9 @@ def load_model():
 def load_dataframe():
     data = pd.read_csv('data.csv')
     
+data = load_dataframe()
+lgbm = load_model()
+
 @st.cache_data    
 def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
