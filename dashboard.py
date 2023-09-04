@@ -47,7 +47,7 @@ def lgbm_prediction(_data, _id_client, _model):
 def update_index(*args):
     pred = lgbm_prediction(data, st.session_state.input, lgbm)
     st.session_state.prediction = pred
-    st.session_state.prediction = type(st.session_state.input)
+    st.session_state.text = type(st.session_state.input)
     
 
 
