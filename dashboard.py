@@ -43,7 +43,7 @@ lgbm = load_model()
 st.session_state.ext_source_3 = 0.57 if 'ext_source_3' not in st.session_state else st.session_state.ext_source_3
 st.session_state.test = -1. if 'test' not in st.session_state else st.session_state.test
 st.session_state.input = 0 if 'input' not in st.session_state else st.session_state.input
-st.session_state.prediction = None if 'prediction' not in st.session_state else st.session_state.prediction
+# st.session_state.prediction = None if 'prediction' not in st.session_state else st.session_state.prediction
 
 col11, col12 = st.columns([0.4,0.6])
 
