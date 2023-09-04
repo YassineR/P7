@@ -5,6 +5,7 @@ import pandas as pd
 import time
 import json
 
+import pickle
 from PIL import Image
 
 st.set_page_config(
@@ -12,11 +13,35 @@ st.set_page_config(
     layout="wide" 
 )
 
-def update_ext_source_3(*args):
-    st.session_state.test = st.session_state.ext_source_3
+@st.cache #mise en cache de la fonction pour exécution unique
+def load_model():
+    lgbm = pickle.load(open('model.pkl', 'rb'))
+
+@st.cache #mise en cache de la fonction pour exécution unique
+def load_dataframe():
+    data = pd.read_csv('data.csv')
+    
+def lgbm_prediction(data, id_client, model):
+    feats = [f for f in data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
+    data = data[data["SK_ID_CURR"] == id_client]
+    return model.predict(data[feats])
+
+# def update_ext_source_3(*args):
+#     st.session_state.test = st.session_state.ext_source_3
+
+def update_index(*args):
+    pred = lgbm_prediction(data, st.session_state.input, lgbm)
+    st.session_state.prediction = pred
+    
+
+data = load_dataframe()
+lgbm = load_model()
 
 st.session_state.ext_source_3 = 0.57 if 'ext_source_3' not in st.session_state else st.session_state.ext_source_3
 st.session_state.test = -1. if 'test' not in st.session_state else st.session_state.test
+st.session_state.input = 0 if 'input' not in st.session_state else st.session_state.input
+st.session_state.prediction = None if 'prediction' not in st.session_state else st.session_state.prediction
+
 col11, col12 = st.columns([0.4,0.6])
 
 with col11:
@@ -26,9 +51,10 @@ with col11:
 with col12:
     st.title('Prêt à dépenser')
     st.subheader("Scoring client")
-    id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
+    id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', on_change=update_index )
     
-    st.number_input('Minutes', key='test', min_value=5., max_value=25., step=1.)
     st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
-                                 min_value=0., step=0.1, max_value = 1., on_change=update_ext_source_3)
+                                 min_value=0., step=0.1, max_value = 1.)
+    
+    st.number_input('Prediction', key='prediction')
     
