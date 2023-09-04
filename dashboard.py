@@ -13,14 +13,16 @@ st.set_page_config(
     layout="wide" 
 )
 
-@st.cache #mise en cache de la fonction pour exécution unique
+@st.cache_resource 
 def load_model():
     lgbm = pickle.load(open('model.pkl', 'rb'))
+    return lgbm
 
-@st.cache #mise en cache de la fonction pour exécution unique
+@st.cache_data #mise en cache de la fonction pour exécution unique
 def load_dataframe():
     data = pd.read_csv('data.csv')
     
+@st.cache_data    
 def lgbm_prediction(data, id_client, model):
     feats = [f for f in data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     data = data[data["SK_ID_CURR"] == id_client]
