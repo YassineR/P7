@@ -25,14 +25,16 @@ def load_dataframe():
     data = pd.read_csv('data.csv')
     return data
 
+
+data = load_dataframe()
+lgbm = load_model()
+
 @st.cache_data    
 def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     data = data[data["SK_ID_CURR"] == id_client]
     return model.predict(data[feats])
     
-data = load_dataframe()
-lgbm = load_model()
 
 
 
