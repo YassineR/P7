@@ -33,7 +33,7 @@ lgbm = load_model()
 def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     _data = _data[data["SK_ID_CURR"] == _id_client]
-    if(_data.shape[0]==0]):
+    if(_data.shape[0]==0):
         return -1
     else:
         return _model.predict(_data[feats])
