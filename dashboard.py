@@ -16,6 +16,7 @@ st.set_page_config(
 @st.cache_resource 
 def load_model():
     lgbm = pickle.load(open('model.pkl', 'rb'))
+    return lgbm
 
 @st.cache_data #mise en cache de la fonction pour exécution unique
 def load_dataframe():
