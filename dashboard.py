@@ -7,6 +7,7 @@ import json
 
 import pickle
 from PIL import Image
+from lightgbm import LGBMClassifier
 
 st.set_page_config(
     page_title="Dashboard Credit Score Client",
