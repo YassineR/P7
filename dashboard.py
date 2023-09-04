@@ -33,12 +33,11 @@ lgbm = load_model()
 def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     _data = _data[data["SK_ID_CURR"] == st.session_state.index]
-    print(_id_client)
     if(_data.shape[0]==0):
-        st.session_state.text = str(type(st.session_state.index))
+        st.session_state.text = str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
         return -1
     else:
-        return _model.predict(_data[feats])
+        return  10 #_model.predict(_data[feats])
     
 
 
