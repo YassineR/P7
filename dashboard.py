@@ -23,15 +23,18 @@ def load_model():
 @st.cache_data #mise en cache de la fonction pour exécution unique
 def load_dataframe():
     data = pd.read_csv('data.csv')
-    
-data = load_dataframe()
-lgbm = load_model()
+    return data
 
 @st.cache_data    
 def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     data = data[data["SK_ID_CURR"] == id_client]
     return model.predict(data[feats])
+    
+data = load_dataframe()
+lgbm = load_model()
+
+
 
 # def update_ext_source_3(*args):
 #     st.session_state.test = st.session_state.ext_source_3
