@@ -72,6 +72,6 @@ with col12:
     
     st.number_input('Prediction', key='prediction')
 
-    st.text_input(key='text' )
+    st.text_input(label = 'text' , key='text' )
     st.dataframe(data.head())
     
