@@ -47,6 +47,7 @@ def lgbm_prediction(_data, _id_client, _model):
 def update_index(*args):
     pred = lgbm_prediction(data, st.session_state.input, lgbm)
     st.session_state.prediction = pred
+    st.session_state.prediction = type(st.session_state.input)
     
 
 
@@ -71,5 +72,6 @@ with col12:
     
     st.number_input('Prediction', key='prediction')
 
+    st.text_input(key='text' )
     st.dataframe(data.head())
     
