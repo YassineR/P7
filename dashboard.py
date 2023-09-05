@@ -33,8 +33,6 @@ def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     _data = _data[data["SK_ID_CURR"] == st.session_state.index]
     if(_data.shape[0]==0):
-        # st.text_input(label = 'text' , key='text' )
-        # st.session_state.text = str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
         return -1
     else:
         return  _model.predict(_data[feats])[0]
@@ -68,7 +66,7 @@ with col12:
 
     if(st.session_state.prediction == -1):
         st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
-        st.text_input(label = 'text' , key='text' )
+        st.text(key='text' )
     
     st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
                                  min_value=0., step=0.1, max_value = 1.)
