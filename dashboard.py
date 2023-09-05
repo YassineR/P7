@@ -8,7 +8,7 @@ import json
 import pickle
 from PIL import Image
 from lightgbm import LGBMClassifier
-import matplotlib.cm as cm
+# import matplotlib.cm as cm
 from matplotlib.colors import Normalize
 from matplotlib.colors import rgb2hex
 import plotly.graph_objs as go
