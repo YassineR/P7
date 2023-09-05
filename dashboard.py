@@ -66,7 +66,7 @@ with col12:
 
     if(st.session_state.prediction == -1):
         st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
-        st.text(key='text' )
+        st.text(body = st.session_state.text  )
     
     st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
                                  min_value=0., step=0.1, max_value = 1.)
