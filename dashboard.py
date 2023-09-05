@@ -44,7 +44,7 @@ def lgbm_prediction(_data, _id_client, _model):
     if(_data.shape[0]==0):
         return -1
     else:
-        return  _model.predict(_data[feats])[0]
+        return  _model.predict_proba(_data[feats])[0]
     
 
 
@@ -82,7 +82,7 @@ with col12:
         fig = go.Figure(go.Indicator(
             mode="gauge+number",
             number={'suffix': "%"},
-            value= st.session_state.prediction,
+            value= st.session_state.prediction[0]*100,
             domain={'x': [0, 1], 'y': [0, 1]},
             title={'text': "Client sûr"},
             gauge={'axis': {'range': [None, 100]},
