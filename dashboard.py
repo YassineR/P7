@@ -67,8 +67,8 @@ with col12:
     id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
 
     if(st.session_state.prediction == -1):
-        st.text_input(label = 'text' , key='text' )
         st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
+        st.text_input(label = 'text' , key='text' )
     
     st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
                                  min_value=0., step=0.1, max_value = 1.)
