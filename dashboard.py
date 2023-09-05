@@ -33,6 +33,7 @@ def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     _data = _data[data["SK_ID_CURR"] == st.session_state.index]
     if(_data.shape[0]==0):
+        st.text_input(label = 'text' , key='text' )
         st.session_state.text = str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
         return -1
     else:
@@ -51,7 +52,6 @@ def update_index(*args):
 
 
 st.session_state.ext_source_3 = 0.57 if 'ext_source_3' not in st.session_state else st.session_state.ext_source_3
-st.session_state.test = -1. if 'test' not in st.session_state else st.session_state.test
 st.session_state.index = 0 if 'index' not in st.session_state else st.session_state.index
 # st.session_state.prediction = None if 'prediction' not in st.session_state else st.session_state.prediction
 
@@ -71,6 +71,6 @@ with col12:
     
     st.number_input('Prediction', key='prediction')
 
-    st.text_input(label = 'text' , key='text' )
+    
     st.dataframe(data.head())
     
