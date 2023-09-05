@@ -53,7 +53,7 @@ def update_index(*args):
 
 st.session_state.ext_source_3 = 0.57 if 'ext_source_3' not in st.session_state else st.session_state.ext_source_3
 st.session_state.index = 0 if 'index' not in st.session_state else st.session_state.index
-# st.session_state.prediction = None if 'prediction' not in st.session_state else st.session_state.prediction
+st.session_state.prediction = 0 if 'prediction' not in st.session_state else st.session_state.prediction
 
 col11, col12 = st.columns([0.4,0.6])
 
