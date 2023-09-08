@@ -109,7 +109,7 @@ with col12:
         st.text(body = st.session_state.text2  )
         
         global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
-        local_FI_fig = Tools.get_plot_local_feature_importance(st.session_state.row[feats])
+        local_FI_fig = Tools.get_plot_local_feature_importance(lgbm, st.session_state.row[feats])
         
         with col121:
             st.plotly_chart(global_FI_fig, use_container_width=True)
