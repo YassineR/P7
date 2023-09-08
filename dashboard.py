@@ -79,7 +79,7 @@ with col12:
         st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
         st.text(body = st.session_state.text  )
 
-    else if(st.session_state.prediction > 0 ):        
+    elif(st.session_state.prediction > 0 ):        
         color = set_color_range(st.session_state.prediction)
         fig = go.Figure(go.Indicator(
             mode="gauge+number",
