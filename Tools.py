@@ -28,7 +28,7 @@ def get_plot_local_feature_importance(model, client_row):
 
     importance_df.sort_values('value',ascending=False, inplace = True)
 
-    importance_df = df3[0:20]
+    importance_df = importance_df[0:20]
 
     importance_df.sort_values('value', inplace = True)
 
