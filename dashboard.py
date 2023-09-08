@@ -103,19 +103,19 @@ with col12:
         ))
         
         st.plotly_chart(gauge_fig, use_container_width=True)
+if(st.session_state.prediction > 0 ):        
+    col21, col22 = st.columns(2)
+    st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
+    st.text(body = st.session_state.text2  )
+    
+    global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
+    local_FI_fig = Tools.get_plot_local_feature_importance(lgbm, st.session_state.row[feats])
+    
+    with col21:
+        st.plotly_chart(local_FI_fig, use_container_width=True)
         
-        col121, col122 = st.columns(2)
-        st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
-        st.text(body = st.session_state.text2  )
-        
-        global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
-        local_FI_fig = Tools.get_plot_local_feature_importance(lgbm, st.session_state.row[feats])
-        
-        with col121:
-            st.plotly_chart(global_FI_fig, use_container_width=True)
-            
-        with col122:        
-            st.plotly_chart(local_FI_fig, use_container_width=True)
+    with col22:        
+        st.plotly_chart(global_FI_fig, use_container_width=True)
         
     
     # st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
