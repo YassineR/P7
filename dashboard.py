@@ -12,6 +12,9 @@ import matplotlib.cm as cm
 from matplotlib.colors import Normalize
 from matplotlib.colors import rgb2hex
 import plotly.graph_objs as go
+import warnings
+import matplotlib.cbook
+warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
 
 st.set_page_config(
     page_title="Dashboard Credit Score Client",
@@ -41,6 +44,7 @@ lgbm = load_model()
 def lgbm_prediction(_data, _id_client, _model):
     feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     _data = _data[data["SK_ID_CURR"] == st.session_state.index]
+    st.session_state.row = _data 
     if(_data.shape[0]==0):
         return -1
     else:
@@ -77,7 +81,7 @@ with col12:
         st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
         st.text(body = st.session_state.text  )
 
-    else:        
+    elif(st.session_state.prediction > 0 ):        
         color = set_color_range(st.session_state.prediction)
         fig = go.Figure(go.Indicator(
             mode="gauge+number",
@@ -93,8 +97,8 @@ with col12:
         st.plotly_chart(fig, use_container_width=True)
 
     
-    st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
-                                 min_value=0., step=0.1, max_value = 1.)
+    # st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
+    #                              min_value=0., step=0.1, max_value = 1.)
     
     st.number_input('Prediction', key='prediction')
 
