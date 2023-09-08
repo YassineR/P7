@@ -98,6 +98,8 @@ with col12:
         st.plotly_chart(gauge_fig, use_container_width=True)
         
         col121, col122 = st.columns(2)
+        st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
+        st.text(body = st.session_state.text2  )
         
         global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row.columns)
         local_FI_fig = Tools.get_plot_local_feature_importance(st.session_state.row)
