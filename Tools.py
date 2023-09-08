@@ -1,9 +1,9 @@
 import shap 
 import pandas as pd
 
-def get_plot_global_feature_importance(model ):
+def get_plot_global_feature_importance(model, columns ):
     importance_df = pd.DataFrame(dict(
-    group = valid_x.columns,
+    group = columns.columns,
     value = model.feature_importances_))
 
     importance_df.sort_values('value',ascending=False, inplace = True)
@@ -22,7 +22,7 @@ def get_plot_local_feature_importance(client_row):
 
     # Sample data
     importance_df = pd.DataFrame(dict(
-        group = valid_x.columns,
+        group = client_row.columns,
         value = local_importance))
 
     importance_df.sort_values('value',ascending=False, inplace = True)
