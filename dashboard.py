@@ -39,7 +39,7 @@ def load_dataframe():
     return data
 
 @st.cache_data #mise en cache de la fonction pour exécution unique
-def set_feats():    
+def set_feats(_data):    
     feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     return feats
     
@@ -47,7 +47,7 @@ def set_feats():
 
 data = load_dataframe()
 lgbm = load_model()
-feats = set_feats()
+feats = set_feats(data)
 
 def lgbm_prediction(_data, _id_client, _model):
     #feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
