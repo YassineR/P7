@@ -1,4 +1,5 @@
 import shap 
+import pandas as pd
 
 def get_plot_global_feature_importance(model ):
     importance_df = pd.DataFrame(dict(
