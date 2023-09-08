@@ -12,6 +12,8 @@ import matplotlib.cm as cm
 from matplotlib.colors import Normalize
 from matplotlib.colors import rgb2hex
 import plotly.graph_objs as go
+import warnings
+import matplotlib.cbook
 warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
 
 st.set_page_config(
