@@ -38,12 +38,19 @@ def load_dataframe():
     data = pd.read_csv('data.csv')
     return data
 
+@st.cache_data #mise en cache de la fonction pour exécution unique
+def set_feats():    
+    feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
+    return feats
+    
+
 
 data = load_dataframe()
 lgbm = load_model()
+feats = set_feats()
 
 def lgbm_prediction(_data, _id_client, _model):
-    feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
+    #feats = [f for f in _data.columns if f not in ['TARGET','SK_ID_CURR','SK_ID_BUREAU','SK_ID_PREV','index']]
     _data = _data[data["SK_ID_CURR"] == st.session_state.index]
     st.session_state.row = _data 
     if(_data.shape[0]==0):
@@ -101,8 +108,8 @@ with col12:
         st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
         st.text(body = st.session_state.text2  )
         
-        global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row.columns)
-        local_FI_fig = Tools.get_plot_local_feature_importance(st.session_state.row)
+        global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
+        local_FI_fig = Tools.get_plot_local_feature_importance(st.session_state.row[feats])
         
         with col121:
             st.plotly_chart(global_FI_fig, use_container_width=True)
