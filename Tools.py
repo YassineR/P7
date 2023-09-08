@@ -38,6 +38,6 @@ def get_plot_local_feature_importance(model, client_row):
                  color = 'value')
     #fig. update_xaxes( autorange="reversed")
     fig. update_yaxes( side = 'right')
-    fig.update_coloraxes(colorbar_orientation='h')
+    fig.update_coloraxes(colorbar_orientation='h', colorbar_y=1.02)
     
     return fig
