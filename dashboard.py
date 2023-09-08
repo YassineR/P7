@@ -99,8 +99,8 @@ with col12:
         
         col121, col122 = st.columns(2)
         
-        global_FI_fig = get_plot_global_feature_importance(lgbm)
-        local_FI_fig = get_plot_local_feature_importance(data.iloc[[0]])
+        global_FI_fig = Tools.get_plot_global_feature_importance(lgbm)
+        local_FI_fig = Tools.get_plot_local_feature_importance(data.iloc[[0]])
         
         with col121:
             st.plotly_chart(global_FI_fig, use_container_width=True)
