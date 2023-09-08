@@ -84,7 +84,7 @@ with col12:
 
     elif(st.session_state.prediction > 0 ):        
         color = set_color_range(st.session_state.prediction)
-        fig = go.Figure(go.Indicator(
+        gauge_fig = go.Figure(go.Indicator(
             mode="gauge+number",
             number={'suffix': "%"},
             value= st.session_state.prediction*100,
@@ -95,8 +95,19 @@ with col12:
                   },
         ))
         
-        st.plotly_chart(fig, use_container_width=True)
-
+        st.plotly_chart(gauge_fig, use_container_width=True)
+        
+        col121, col122 = st.columns()
+        
+        global_FI_fig = get_plot_global_feature_importance()
+        local_FI_fig = get_plot_local_feature_importance(data.iloc[[0]])
+        
+        with col121:
+            st.plotly_chart(global_FI_fig, use_container_width=True)
+            
+        with col122:        
+            st.plotly_chart(local_FI_fig, use_container_width=True)
+        
     
     # st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
     #                              min_value=0., step=0.1, max_value = 1.)
