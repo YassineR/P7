@@ -38,5 +38,4 @@ def get_plot_local_feature_importance(model, client_row):
     fig. update_yaxes( side = 'right')
     fig.update_coloraxes(colorbar_orientation='h')
     
-    
-    fig.show()
+    return fig
