@@ -3,7 +3,7 @@ import pandas as pd
 
 def get_plot_global_feature_importance(model, columns ):
     importance_df = pd.DataFrame(dict(
-    group = columns.columns,
+    group = columns,
     value = model.feature_importances_))
 
     importance_df.sort_values('value',ascending=False, inplace = True)
