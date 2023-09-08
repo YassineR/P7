@@ -17,9 +17,9 @@ def get_plot_global_feature_importance(model, columns ):
                  color = 'value')
     return fig
 
-def get_plot_local_feature_importance(client_row):
+def get_plot_local_feature_importance(model, client_row):
     
-    local_importance = lgbm_clf.predict(client_row, pred_contrib=True)[0][0:-1]
+    local_importance = model.predict(client_row, pred_contrib=True)[0][0:-1]
 
     # Sample data
     importance_df = pd.DataFrame(dict(
