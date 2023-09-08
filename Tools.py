@@ -1,5 +1,6 @@
 import shap 
 import pandas as pd
+import plotly.express as px
 
 def get_plot_global_feature_importance(model, columns ):
     importance_df = pd.DataFrame(dict(
