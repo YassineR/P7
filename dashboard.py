@@ -105,7 +105,7 @@ with col12:
             st.text(body = 'Montant du produit : ' + str(st.session_state.row['AMT_GOODS_PRICE'].values[0] ))
             
             age = int(np.floor(st.session_state.row['DAYS_BIRTH'].values[0] / 365))
-            st.text(body = 'Age : '+ age  )
+            st.text(body = 'Age : '+ str(age)  )
             
         with col122:
         
