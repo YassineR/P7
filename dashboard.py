@@ -116,7 +116,7 @@ with col12:
                       },
             ))
         
-        st.plotly_chart(gauge_fig, use_container_width=True)
+            st.plotly_chart(gauge_fig, use_container_width=True)
 if(st.session_state.prediction > 0 ):        
     col21, col22 = st.columns(2)
     st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
