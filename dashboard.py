@@ -89,7 +89,20 @@ with col12:
         st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
         st.text(body = st.session_state.text  )
 
-    elif(st.session_state.prediction > 0 ):        
+    elif(st.session_state.prediction > 0 ): 
+
+        # col121, col122 = st.columns(2)
+
+        # with col121:
+        with st.form('Informations clients'):
+            st.text(body = st.session_state.row['CODE_GENDER'] )
+            st.text(body = st.session_state.row['AMT_CREDIT'] )
+            st.text(body = st.session_state.row['AMT_ANNUITY'] )
+            st.text(body = st.session_state.row['AMT_GOODS_PRICE'] )
+            st.text(body = st.session_state.row['DAYS_BIRTH'] )
+            
+        # with col122:
+        
         color = set_color_range(st.session_state.prediction)
         gauge_fig = go.Figure(go.Indicator(
             mode="gauge+number",
