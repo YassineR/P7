@@ -82,7 +82,7 @@ with col12:
     id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
 
     if(st.session_state.prediction == -1):        
-        st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
+        st.session_state.text =  "Client introuvable "
         st.error(st.session_state.text )
         
         # st.text(body = st.session_state.text  )
@@ -130,9 +130,13 @@ with col12:
         
             st.plotly_chart(gauge_fig, use_container_width=True)
 if(st.session_state.prediction > 0 ):        
-    col21, col22 = st.columns(2)
-    st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
-    st.text(body = st.session_state.text2  )
+    
+    tab1, tab2, tab3 = st.tabs(["Importance des features", "Ensemble des clients", "Clients similaires"])
+    
+    with tab1:
+        col21, col22 = st.columns(2)
+        st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
+        st.text(body = st.session_state.text2  )
     
     global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
     local_FI_fig = Tools.get_plot_local_feature_importance(lgbm, st.session_state.row[feats])
@@ -142,6 +146,13 @@ if(st.session_state.prediction > 0 ):
         
     with col22:        
         st.plotly_chart(global_FI_fig, use_container_width=True)
+    
+    with tab2:
+       st.header("Chart ")
+    
+    with tab3:
+       st.header("Chart 2 ")
+        
         
     
     # st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
