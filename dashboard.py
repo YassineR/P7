@@ -59,11 +59,6 @@ def lgbm_prediction(_data, _id_client, _model):
         return  _model.predict_proba(_data[feats])[0][0]
     
 
-
-
-# def update_ext_source_3(*args):
-#     st.session_state.test = st.session_state.ext_source_3
-
 def update_index(*args):
     pred = lgbm_prediction(data, st.session_state.index, lgbm)
     st.session_state.prediction = pred
@@ -86,9 +81,11 @@ with col12:
     st.subheader("Scoring client")
     id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
 
-    if(st.session_state.prediction == -1):
+    if(st.session_state.prediction == -1):        
         st.session_state.text =  "Client introuvable "+ str(type(st.session_state.index)) + "  --  " + str(st.session_state.index)
-        st.text(body = st.session_state.text  )
+        st.error(st.session_state.text )
+        
+        # st.text(body = st.session_state.text  )
 
     elif(st.session_state.prediction > 0 ): 
 
