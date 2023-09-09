@@ -97,9 +97,9 @@ with col12:
         with col121:
             st.subheader("Informations clients")
             
-            st.text()
-            st.text()
-            st.text()
+            st.text('\n\n\n')
+            # st.text('')
+            # st.text('')
 
             
             gender = 'Homme' if st.session_state.row['CODE_GENDER'].values[0] == 0 else 'Femme'  
