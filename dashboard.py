@@ -97,15 +97,15 @@ with col12:
         with col121:
             st.subheader("Informations clients")
             
-            gender = 'M' if st.session_state.row['CODE_GENDER'].values[0] == 0 else 'F'  
+            gender = 'Homme' if st.session_state.row['CODE_GENDER'].values[0] == 0 else 'Femme'  
             st.text(body = 'Genre : ' + gender)
             
-            st.text(body ='Montant du crédit : ' + str(st.session_state.row['AMT_CREDIT'].values[0] ))
-            st.text(body = 'Montant de l\'annuité : ' + str(st.session_state.row['AMT_ANNUITY'].values[0] ))
-            st.text(body = 'Montant du produit : ' + str(st.session_state.row['AMT_GOODS_PRICE'].values[0] ))
+            st.text(body ='Montant du crédit : ' + str(st.session_state.row['AMT_CREDIT'].values[0] ) + '$')
+            st.text(body = 'Montant de l\'annuité : ' + str(st.session_state.row['AMT_ANNUITY'].values[0] )+ '$)
+            st.text(body = 'Montant du produit : ' + str(st.session_state.row['AMT_GOODS_PRICE'].values[0] )+ '$)
             
-            age = int(np.floor(st.session_state.row['DAYS_BIRTH'].values[0] / 365))
-            st.text(body = 'Age : '+ str(age)  )
+            age = int(np.floor((-1*st.session_state.row['DAYS_BIRTH'].values[0]) / 365))
+            st.text(body = 'Age : '+ str(age) + ' ans' )
             
         with col122:
         
