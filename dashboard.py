@@ -92,29 +92,29 @@ with col12:
 
     elif(st.session_state.prediction > 0 ): 
 
-        # col121, col122 = st.columns(2)
+        col121, col122 = st.columns(2)
 
-        # with col121:
-        with st.form('Informations clients'):
+        with col121:
+            st.subheader("Informations clients")
             st.text(body = st.session_state.row['CODE_GENDER'] )
             st.text(body = st.session_state.row['AMT_CREDIT'] )
             st.text(body = st.session_state.row['AMT_ANNUITY'] )
             st.text(body = st.session_state.row['AMT_GOODS_PRICE'] )
             st.text(body = st.session_state.row['DAYS_BIRTH'] )
             
-        # with col122:
+        with col122:
         
-        color = set_color_range(st.session_state.prediction)
-        gauge_fig = go.Figure(go.Indicator(
-            mode="gauge+number",
-            number={'suffix': "%"},
-            value= st.session_state.prediction*100,
-            domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Client sûr"},
-            gauge={'axis': {'range': [None, 100]},
-                   'bar' : {'color': color}
-                  },
-        ))
+            color = set_color_range(st.session_state.prediction)
+            gauge_fig = go.Figure(go.Indicator(
+                mode="gauge+number",
+                number={'suffix': "%"},
+                value= st.session_state.prediction*100,
+                domain={'x': [0, 1], 'y': [0, 1]},
+                title={'text': "Client sûr"},
+                gauge={'axis': {'range': [None, 100]},
+                       'bar' : {'color': color}
+                      },
+            ))
         
         st.plotly_chart(gauge_fig, use_container_width=True)
 if(st.session_state.prediction > 0 ):        
