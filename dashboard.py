@@ -96,7 +96,8 @@ with col12:
 
         with col121:
             st.subheader("Informations clients")
-            st.text(body = st.session_state.row['CODE_GENDER'].values[0] )
+            gender = 'M' if st.session_state.row['CODE_GENDER'].values[0] == 0 else 'F'  
+            st.text(body = 'Genre : ' + gender)
             st.text(body = st.session_state.row['AMT_CREDIT'].values[0] )
             st.text(body = st.session_state.row['AMT_ANNUITY'].values[0] )
             st.text(body = st.session_state.row['AMT_GOODS_PRICE'].values[0] )
