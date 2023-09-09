@@ -92,17 +92,22 @@ with col12:
 
     elif(st.session_state.prediction > 0 ): 
 
-        col121, col122 = st.columns(2)
+        col121, col122 = st.columns([0.4,0.6])
 
         with col121:
             st.subheader("Informations clients")
+            
+            st.text()
+            st.text()
+            st.text()
+
             
             gender = 'Homme' if st.session_state.row['CODE_GENDER'].values[0] == 0 else 'Femme'  
             st.text(body = 'Genre : ' + gender)
             
             st.text(body ='Montant du crédit : ' + str(st.session_state.row['AMT_CREDIT'].values[0] ) + '$')
-            st.text(body = 'Montant de l\'annuité : ' + str(st.session_state.row['AMT_ANNUITY'].values[0] )+ '$)
-            st.text(body = 'Montant du produit : ' + str(st.session_state.row['AMT_GOODS_PRICE'].values[0] )+ '$)
+            st.text(body = 'Montant de l\'annuité : ' + str(st.session_state.row['AMT_ANNUITY'].values[0] )+ '$')
+            st.text(body = 'Montant du produit : ' + str(st.session_state.row['AMT_GOODS_PRICE'].values[0] )+ '$')
             
             age = int(np.floor((-1*st.session_state.row['DAYS_BIRTH'].values[0]) / 365))
             st.text(body = 'Age : '+ str(age) + ' ans' )
