@@ -95,9 +95,9 @@ with col12:
         col121, col122 = st.columns([0.4,0.6])
 
         with col121:
+            st.text('\n\n\n')
             st.subheader("Informations clients")
             
-            st.text('\n\n\n')
             st.text('')
             st.text('')
 
