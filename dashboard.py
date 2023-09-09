@@ -98,19 +98,24 @@ with col12:
             st.subheader("Informations clients")
             
             st.text('\n\n\n')
-            # st.text('')
-            # st.text('')
+            st.text('')
+            st.text('')
 
             
             gender = 'Homme' if st.session_state.row['CODE_GENDER'].values[0] == 0 else 'Femme'  
             st.text(body = 'Genre : ' + gender)
             
-            st.text(body ='Montant du crédit : ' + str(st.session_state.row['AMT_CREDIT'].values[0] ) + '$')
-            st.text(body = 'Montant de l\'annuité : ' + str(st.session_state.row['AMT_ANNUITY'].values[0] )+ '$')
-            st.text(body = 'Montant du produit : ' + str(st.session_state.row['AMT_GOODS_PRICE'].values[0] )+ '$')
+            st.text(body = 'Montant du produit : ' + str(st.session_state.row['AMT_GOODS_PRICE'].values[0] )+ ' $')
+            st.text(body ='Montant du crédit : ' + str(st.session_state.row['AMT_CREDIT'].values[0] ) + ' $')
+            st.text(body = 'Montant de l\'annuité : ' + str(st.session_state.row['AMT_ANNUITY'].values[0] )+ ' $')
             
             age = int(np.floor((-1*st.session_state.row['DAYS_BIRTH'].values[0]) / 365))
             st.text(body = 'Age : '+ str(age) + ' ans' )
+
+            indication = 'Accepté' if st.session_state.prediction > 0.5 else 'Refusé'         
+            st.text(body = 'Indication  : '+ indication )
+
+        
             
         with col122:
         
