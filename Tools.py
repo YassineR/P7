@@ -49,6 +49,7 @@ def barplot_client_majority(df, client_data):
         
     if(len(client_data) <= 0):
         return
+    id = client_data["SK_ID_CURR"]
     
     # Calculate the features of interest for the selected client
     client_amt_credit = client_data['AMT_CREDIT'].values[0]
@@ -78,7 +79,7 @@ def barplot_client_majority(df, client_data):
 
     # Update layout
     fig.update_layout(
-        title=f'Comparaison du client{client_data['SK_ID_CURR']} à l\'ensembe des clients')
+        title=f'Comparaison du client{id} à l\'ensembe des clients')
 
     return fig
 
