@@ -89,6 +89,7 @@ with col12:
 
     elif(st.session_state.prediction > 0 ): 
 
+        st.dataframe(st.session_state.row)
         col121, col122 = st.columns([0.4,0.6])
 
         with col121:
