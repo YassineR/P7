@@ -149,11 +149,11 @@ if(st.session_state.prediction > 0 ):
         st.plotly_chart(global_FI_fig, use_container_width=True)
     
     with tab2:
-       st.header("Chart ")
+        st.header("Chart ")
         st.plotly_chart(barplot_client_majority, use_container_width=True)
     
     with tab3:
-       st.header("Chart 2 ")
+        st.header("Chart 2 ")
         st.plotly_chart(barplot_same_clients, use_container_width=True)
         
         
