@@ -42,11 +42,8 @@ def get_plot_local_feature_importance(model, client_row):
     
     return fig
 
-def barplot_client_majority(client_id_to_compare):    
-    
-    # Filter the data for the selected client
-    client_data = df[df['SK_ID_CURR'] == client_id_to_compare]
-    
+def barplot_client_majority(client_data):    
+        
     if(len(client_data) <= 0):
         return
     
@@ -82,10 +79,7 @@ def barplot_client_majority(client_id_to_compare):
 
     return fig
 
-def barplot_same_clients(client_id_to_compare):    
-    
-    # Filter the data for the selected client
-    client_data = df[df['SK_ID_CURR'] == client_id_to_compare]
+def barplot_same_clients(client_data):    
     
     if(len(client_data) <= 0):
         return
