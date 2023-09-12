@@ -2,6 +2,7 @@ import shap
 import pandas as pd
 import plotly.express as px
 import numpy as np
+import plotly.subplots as sp
 
 px.defaults.color_continuous_scale = px.colors.sequential.Darkmint
 
