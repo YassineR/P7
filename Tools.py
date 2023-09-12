@@ -78,7 +78,7 @@ def barplot_client_majority(df, client_data):
 
     # Update layout
     fig.update_layout(
-        title=f'Comparaison du client{client_id_to_compare} à l\'ensembe des clients')
+        title=f'Comparaison du client{client_data['SK_ID_CURR']} à l\'ensembe des clients')
 
     return fig
 
@@ -130,7 +130,7 @@ def barplot_same_clients(df, client_data):
 
     # Update layout
     fig.update_layout(
-        title=f'Comparaison du client{client_id_to_compare} à l\'ensembe des clients')
+        title=f'Comparaison du client{client_data['SK_ID_CURR']} à l\'ensembe des clients')
     
     return fig
 
