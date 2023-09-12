@@ -140,7 +140,8 @@ if(st.session_state.prediction > 0 ):
     
     global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
     local_FI_fig = Tools.get_plot_local_feature_importance(lgbm, st.session_state.row[feats])
-    
+    barplot_client_majority = Tools.barplot_client_majority(st.session_state.row[feats])
+    barplot_same_clients = Tools.barplot_same_clients(st.session_state.row[feats])
     with col21:
         st.plotly_chart(local_FI_fig, use_container_width=True)
         
@@ -149,9 +150,11 @@ if(st.session_state.prediction > 0 ):
     
     with tab2:
        st.header("Chart ")
+        st.plotly_chart(barplot_client_majority, use_container_width=True)
     
     with tab3:
        st.header("Chart 2 ")
+        st.plotly_chart(barplot_same_clients, use_container_width=True)
         
         
     
