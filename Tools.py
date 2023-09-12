@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 import plotly.subplots as sp
+import plotly.graph_objs as go
 
 px.defaults.color_continuous_scale = px.colors.sequential.Darkmint
 
