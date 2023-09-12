@@ -43,7 +43,7 @@ def get_plot_local_feature_importance(model, client_row):
     
     return fig
 
-def barplot_client_majority(client_data):    
+def barplot_client_majority(df, client_data):    
         
     if(len(client_data) <= 0):
         return
@@ -80,7 +80,7 @@ def barplot_client_majority(client_data):
 
     return fig
 
-def barplot_same_clients(client_data):    
+def barplot_same_clients(df, client_data):    
     
     if(len(client_data) <= 0):
         return
