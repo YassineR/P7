@@ -135,19 +135,21 @@ if(st.session_state.prediction > 0 ):
     
     with tab1:
         col21, col22 = st.columns(2)
-        st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
-        st.text(body = st.session_state.text2  )
+        # st.session_state.text2  =  str(st.session_state.row.shape) +'  ' +  str(lgbm.feature_importances_.shape)
+        # st.text(body = st.session_state.text2  )
     
     global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
     local_FI_fig = Tools.get_plot_local_feature_importance(lgbm, st.session_state.row[feats])
     barplot_client_majority = Tools.barplot_client_majority(data, st.session_state.row)
     barplot_same_clients = Tools.barplot_same_clients(data, st.session_state.row)
     with col21:
-        st.subheader("Information impactant le plus le client (local feature importance) ")
+        st.subheader("Local feature importance")
+        st.text(body = "Informations impactant le plus le client" )
         st.plotly_chart(local_FI_fig, use_container_width=True)
         
     with col22:        
-        st.subheader("Impact moyen sur les clients (global feature importance) ")
+        st.subheader("(Global feature importance) ")
+        st.text(body = "Impact moyen sur les clients " )
         st.plotly_chart(global_FI_fig, use_container_width=True)
     
     with tab2:
