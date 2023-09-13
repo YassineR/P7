@@ -132,14 +132,15 @@ with col12:
 if(st.session_state.prediction > 0 ):        
     
     tab1, tab2, tab3 = st.tabs(["Importance des features", "Ensemble des clients", "Clients similaires"])
-    
-    with tab1:
-        col21, col22 = st.columns(2)
-    
+
     global_FI_fig = Tools.get_plot_global_feature_importance(lgbm,st.session_state.row[feats].columns)
     local_FI_fig = Tools.get_plot_local_feature_importance(lgbm, st.session_state.row[feats])
     barplot_client_majority = Tools.barplot_client_majority(data, st.session_state.row)
     barplot_same_clients = Tools.barplot_same_clients(data, st.session_state.row)
+    
+    with tab1:
+        col21, col22 = st.columns(2)
+    
         with col21:
             st.subheader("        Local feature importance")
             st.text(body = "        Informations impactant le plus le client" )
