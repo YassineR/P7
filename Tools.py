@@ -78,9 +78,9 @@ def barplot_client_majority(df, client_data):
 
     # Update layout
     
-    id = client_data["SK_ID_CURR"].values[0]
-    fig.update_layout(
-        title=f'Comparaison du client{id} à l\'ensembe des clients')
+    # id = client_data["SK_ID_CURR"].values[0]
+    # fig.update_layout(
+    #     title=f'Comparaison du client{id} à l\'ensembe des clients')
 
     return fig
 
@@ -92,8 +92,7 @@ def barplot_same_clients(df, client_data):
     # Calculate the features of interest for the selected client
     client_amt_credit = client_data['AMT_CREDIT'].values[0]
     client_amt_annuity = client_data['AMT_ANNUITY'].values[0]
-    client_amt_goods_price = client_data['AMT_GOODS_PRICE'].values[0]
-    
+    client_amt_goods_price = client_data['AMT_GOODS_PRICE'].values[0]    
     
     
     client_EXT_SOURCE_3 = client_data['EXT_SOURCE_3'].values[0]
@@ -119,21 +118,21 @@ def barplot_same_clients(df, client_data):
         "EXT_SOURCE_3", "EXT_SOURCE_2", "PAYMENT_RATE"))
 
 
-    fig.add_trace(go.Bar(x=['Client', 'Moyenne'], y=[client_EXT_SOURCE_3, mean_same_client_amt_credit],
+    fig.add_trace(go.Bar(x=['Client', 'Clients similaires'], y=[client_EXT_SOURCE_3, mean_same_client_amt_credit],
                   name='EXT_SOURCE_3', text=[client_EXT_SOURCE_3, mean_same_client_amt_credit]), row=1, col=1)
 
-    fig.add_trace(go.Bar(x=['Client', 'Moyenne'], 
+    fig.add_trace(go.Bar(x=['Client', 'Clients similaires'], 
                          y=[client_EXT_SOURCE_2, mean_same_client_amt_annuity], name='EXT_SOURCE_2', 
                          text=[client_EXT_SOURCE_2, mean_same_client_amt_annuity]), row=1, col=2)
 
-    fig.add_trace(go.Bar(x=['Client', 'Moyenne'], 
+    fig.add_trace(go.Bar(x=['Client', 'Clients similaires'], 
                          y=[client_PAYMENT_RATE, mean_same_client_goods_price], name='PAYMENT_RATE', 
                          text=[client_PAYMENT_RATE, mean_same_client_goods_price]), row=2, col=1)
 
-    # Update layout
-    id = client_data["SK_ID_CURR"].values[0]
-    fig.update_layout(
-        title=f'Comparaison du client{id} à l\'ensembe des clients')
+    # # Update layout
+    # id = client_data["SK_ID_CURR"].values[0]
+    # fig.update_layout(
+    #     title=f'Comparaison du client{id} à l\'ensembe des clients')
     
     return fig
 
