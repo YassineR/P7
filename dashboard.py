@@ -89,7 +89,6 @@ with col12:
 
     elif(st.session_state.prediction > 0 ): 
 
-        st.dataframe(st.session_state.row)
         col121, col122 = st.columns([0.4,0.6])
 
         with col121:
@@ -144,26 +143,19 @@ if(st.session_state.prediction > 0 ):
     barplot_client_majority = Tools.barplot_client_majority(data, st.session_state.row)
     barplot_same_clients = Tools.barplot_same_clients(data, st.session_state.row)
     with col21:
+        st.subheader("Information impactant le plus le client (local feature importance) ")
         st.plotly_chart(local_FI_fig, use_container_width=True)
         
     with col22:        
+        st.subheader("Impact moyen sur les clients (global feature importance) ")
         st.plotly_chart(global_FI_fig, use_container_width=True)
     
     with tab2:
-        st.header("Chart ")
+        st.subheader("Information du client vs Moyenne ")
         st.plotly_chart(barplot_client_majority, use_container_width=True)
     
     with tab3:
-        st.header("Chart 2 ")
-        st.plotly_chart(barplot_same_clients, use_container_width=True)
+        st.subheader("Information du client vs Clients similaires ")
+        st.text(body = "Les clients similaires rassemblent les clients ayant le mêmes crédit, annuité et valeur du produit (+/- 10%)" )
+        st.plotly_chart(barplot_same_clients, use_container_width=True)       
         
-        
-    
-    # st.number_input('EXT_SOURCE_3', key = 'ext_source_3',
-    #                              min_value=0., step=0.1, max_value = 1.)
-    
-    st.number_input('Prediction', key='prediction')
-
-    
-    st.dataframe(data.head())
-    
