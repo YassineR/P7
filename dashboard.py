@@ -33,7 +33,7 @@ def set_color_range(probability):
 def load_model():
         
     try:
-        response = requests.get('http://1257.0.0.1:5000/get-model')
+        response = requests.get('http://yrp7.azurewebsites.net/get-model')
     except ConnectionError as e:    # This is the correct syntax
         response = "No response"
 
