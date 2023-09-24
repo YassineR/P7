@@ -33,7 +33,7 @@ def set_color_range(probability):
 def load_model():
         
     try:
-        response = requests.get('http://1257.0.0.1:5000/get-model')
+        response = requests.get('http://yrp7.azurewebsites.net/get-model')
     except ConnectionError as e:    # This is the correct syntax
         response = "No response"
 
@@ -52,7 +52,7 @@ def load_model():
 
 @st.cache_data #mise en cache de la fonction pour exécution unique
 def load_dataframe():
-    data = pd.read_csv('data.csv')
+    data = pd.read_csv('home_credit_data_sample.csv')
     return data
 
 @st.cache_data #mise en cache de la fonction pour exécution unique
