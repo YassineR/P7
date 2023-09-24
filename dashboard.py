@@ -3,7 +3,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import time
-import json
+import requests
+from requests.exceptions import ConnectionError
 import Tools
 
 import pickle
@@ -30,7 +31,23 @@ def set_color_range(probability):
 
 @st.cache_resource 
 def load_model():
-    lgbm = pickle.load(open('model.pkl', 'rb'))
+        
+    try:
+        response = requests.get('http://1257.0.0.1:5000/get-model')
+    except ConnectionError as e:    # This is the correct syntax
+        response = "No response"
+
+    if response !="No response":
+        if response.status_code == 200:
+            # Deserialize the received model
+            lgbm = pickle.loads(response.content)
+            st.session_state.api_status = 'OK'
+            
+    else:
+        print("Failed to retrieve the model from the API")
+        lgbm = pickle.load(open('model.pkl', 'rb'))
+        st.session_state.api_status = 'NOK'
+        
     return lgbm
 
 @st.cache_data #mise en cache de la fonction pour exécution unique
@@ -65,7 +82,7 @@ def update_index(*args):
     
 
 
-st.session_state.ext_source_3 = 0.57 if 'ext_source_3' not in st.session_state else st.session_state.ext_source_3
+st.session_state.api_status = 'OK' if 'api_status' not in st.session_state else st.session_state.api_status
 st.session_state.index = 0 if 'index' not in st.session_state else st.session_state.index
 st.session_state.prediction = 0. if 'prediction' not in st.session_state else st.session_state.prediction
 
@@ -81,6 +98,10 @@ with col12:
     st.subheader("Scoring client")
     id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
 
+    
+    if(st.session_state.api_status == 'NOK'):  
+        st.warning('Model successfully loaded locally, but the API is currently unavailable.', icon="⚠️")
+        
     if(st.session_state.prediction == -1):        
         st.session_state.text =  "Client introuvable "
         st.error(st.session_state.text )
