@@ -52,7 +52,7 @@ def load_model():
 
 @st.cache_data #mise en cache de la fonction pour exécution unique
 def load_dataframe():
-    data = pd.read_csv('data.csv')
+    data = pd.read_csv('home_credit_data_sample.csv')
     return data
 
 @st.cache_data #mise en cache de la fonction pour exécution unique
