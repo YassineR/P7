@@ -87,7 +87,6 @@ st.session_state.index = 0 if 'index' not in st.session_state else st.session_st
 st.session_state.prediction = 0. if 'prediction' not in st.session_state else st.session_state.prediction
 
 col11, col12 = st.columns([0.4,0.6])
-st.dataframe(data)
 with col11:
     image = Image.open('Logo.png')    
     st.image(image)
