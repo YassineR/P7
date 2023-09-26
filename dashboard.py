@@ -32,7 +32,7 @@ def set_color_range(probability):
 @st.cache_resource 
 def load_model():
         
-        response = requests.get('http://yrp7.azurewebsites.net/get-model')
+    response = requests.get('http://yrp7.azurewebsites.net/get-model')
     try:
         response = requests.get('http://yrp7.azurewebsites.net/get-model')
         print(response.status_code)
