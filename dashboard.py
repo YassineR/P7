@@ -34,6 +34,7 @@ def load_model():
         
     try:
         response = requests.get('http://yrp7.azurewebsites.net/get-model')
+        print(response.status_code)
         if response.status_code == 200:
             # Deserialize the received model
             lgbm = pickle.loads(response.content)
