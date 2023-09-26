@@ -42,7 +42,7 @@ def load_model():
         response = "No response"            
     else:
         print("Failed to retrieve the model from the API")
-        lgbm = pickle.load(open('model.pkl', 'rb'))
+        lgbm = pickle.load(open('lgbm_client_scoring.pkl', 'rb'))
         st.session_state.api_status = 'NOK'
         
     return lgbm
