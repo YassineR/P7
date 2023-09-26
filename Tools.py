@@ -39,7 +39,6 @@ def get_plot_local_feature_importance(model, client_row):
 
     fig = px.bar(importance_df, y = 'group', x = 'value',
                  color = 'value')
-    #fig. update_xaxes( autorange="reversed")
     fig. update_yaxes( side = 'right')
     fig.update_coloraxes(colorbar_x=-0.2)
     
@@ -106,7 +105,7 @@ def barplot_same_clients(df, client_data):
         & (df['AMT_ANNUITY'] <= client_amt_annuity*1.10) & (df['AMT_ANNUITY'] >= client_amt_annuity*0.90)
         & (df['AMT_GOODS_PRICE'] <= client_amt_goods_price*1.10)  & (df['AMT_GOODS_PRICE'] >= client_amt_goods_price*0.90)        
         
-    ]#[['AMT_CREDIT','AMT_ANNUITY','AMT_GOODS_PRICE']]
+    ]
     print(same_clients.shape)
     
     mean_same_client_amt_credit = np.round(same_clients['EXT_SOURCE_3'].mean(), decimals=2) 
