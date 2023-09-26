@@ -81,7 +81,7 @@ def update_index(*args):
     
 
 
-st.session_state.api_status = 'OK' if 'api_status' not in st.session_state else st.session_state.api_status
+st.session_state.api_status = 'OK' if 'api_status' not in st.api_status else st.session_state.api_status
 st.session_state.index = 0 if 'index' not in st.session_state else st.session_state.index
 st.session_state.prediction = 0. if 'prediction' not in st.session_state else st.session_state.prediction
 
