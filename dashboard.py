@@ -97,7 +97,8 @@ with col12:
     id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
 
     
-    st.text(st.session_state.api_status")
+    st.text(st.session_state.api_status
+)
 
     if(st.session_state.api_status == 'NOK'):  
         st.warning('Model successfully loaded locally, but the API is currently unavailable.', icon="⚠️")
