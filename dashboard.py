@@ -91,13 +91,12 @@ with col12:
     st.title('Prêt à dépenser')
     st.subheader("Scoring client")
     id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
-
-    
-    st.text(st.session_state.api_status
-)
+   
 
     if(st.session_state.api_status == 'NOK'):  
         st.warning('Model successfully loaded locally, but the API is currently unavailable.', icon="⚠️")
+    else:
+        st.info('Successful API connection', icon="ℹ️")
         
     if(st.session_state.prediction == -1):        
         st.session_state.text =  "Client introuvable "
