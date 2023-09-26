@@ -81,7 +81,7 @@ def update_index(*args):
     
 
 
-st.session_state.api_status = 'OK' if 'api_status' not in st.api_status else st.session_state.api_status
+st.session_state.api_status = 'OK' if 'api_status' not in st.session_state else st.session_state.api_status
 st.session_state.index = 0 if 'index' not in st.session_state else st.session_state.index
 st.session_state.prediction = 0. if 'prediction' not in st.session_state else st.session_state.prediction
 
@@ -97,6 +97,8 @@ with col12:
     id_input = st.number_input('Veuillez saisir l\'identifiant d\'un client:',key = 'index',min_value = 0, on_change=update_index )
 
     
+    st.text(st.session_state.api_status")
+
     if(st.session_state.api_status == 'NOK'):  
         st.warning('Model successfully loaded locally, but the API is currently unavailable.', icon="⚠️")
         
