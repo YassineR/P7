@@ -33,19 +33,19 @@ def set_color_range(probability):
 def load_model():
         
     response = requests.get('http://yrp7.azurewebsites.net/get-model')
-    try:
-        response = requests.get('http://yrp7.azurewebsites.net/get-model')
-        print(response.status_code)
-        if response.status_code == 200:
-            # Deserialize the received model
-            lgbm = pickle.loads(response.content)
-            st.session_state.api_status = 'OK'
-    except ConnectionError as e:    # This is the correct syntax
-        response = "No response"            
-    else:
-        print("Failed to retrieve the model from the API")
-        lgbm = pickle.load(open('lgbm_client_scoring.pkl', 'rb'))
-        st.session_state.api_status = 'NOK'
+    # try:
+    response = requests.get('http://yrp7.azurewebsites.net/get-model')
+    print(response.status_code)
+    if response.status_code == 200:
+        # Deserialize the received model
+        lgbm = pickle.loads(response.content)
+        st.session_state.api_status = 'OK'
+    # except ConnectionError as e:    # This is the correct syntax
+    #     response = "No response"            
+    # else:
+    #     print("Failed to retrieve the model from the API")
+    #     lgbm = pickle.load(open('lgbm_client_scoring.pkl', 'rb'))
+    #     st.session_state.api_status = 'NOK'
         
     return lgbm
 
